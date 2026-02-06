@@ -20,7 +20,7 @@
                 </div>
                 <div class="flex space-x-6">
                     <a href="{{ route('information-lab.index') }}" class="text-gray-700 hover:text-blue-600 font-medium">Information Lab</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 font-medium">Dokumentasi</a>
+                    <a href="{{ route('admin.index') }}" class="text-gray-700 hover:text-blue-600 font-medium">Admin</a>
                 </div>
             </div>
         </nav>

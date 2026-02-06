@@ -10,12 +10,18 @@ class GuruSeeder extends Seeder
     public function run(): void
     {
         $gurus = [
-            ['nama' => 'Budi Santoso', 'nip' => '198501011234567', 'foto' => null],
-            ['nama' => 'Siti Nurhaliza', 'nip' => '198702021234568', 'foto' => null],
-            ['nama' => 'Ahmad Wijaya', 'nip' => '198803031234569', 'foto' => null],
-            ['nama' => 'Eka Putri', 'nip' => '198904041234570', 'foto' => null],
-            ['nama' => 'Rudi Hermawan', 'nip' => '199005051234571', 'foto' => null],
-            ['nama' => 'Dwi Lestari', 'nip' => '199106061234572', 'foto' => null],
+            ['nama' => 'Nurhanan Afifah, S.Pd.', 'nip' => '198501011234501', 'foto' => null],
+            ['nama' => 'Zian Muzakkiyah Kosman, S.Pd, M.Pd.', 'nip' => '198501011234502', 'foto' => null],
+            ['nama' => 'Ahmad Jumadi, S.Kom.', 'nip' => '198501011234503', 'foto' => null],
+            ['nama' => 'Dhian Nur Rahayu, S.T, M.Kom.', 'nip' => '198501011234504', 'foto' => null],
+            ['nama' => 'Hani Siti Nuraen, S.Pd.', 'nip' => '198501011234505', 'foto' => null],
+            ['nama' => 'Drs. Deden Hamdani, M.M.', 'nip' => '198501011234506', 'foto' => null],
+            ['nama' => 'Gunawan Busyaeri, S.Pd.', 'nip' => '198501011234507', 'foto' => null],
+            ['nama' => 'Yusuf Effendy, S.T.', 'nip' => '198501011234508', 'foto' => null],
+            ['nama' => 'Dewi Lestari Nengsih, S.IP.', 'nip' => '198501011234509', 'foto' => null],
+            ['nama' => 'Darwis Prasetyo, S.Pd.', 'nip' => '198501011234510', 'foto' => null],
+            ['nama' => 'Indria Listiani Ningrum, S.T.', 'nip' => '198501011234511', 'foto' => null],
+            ['nama' => 'Acun, S.Pd.', 'nip' => '198501011234512', 'foto' => null],
         ];
 
         foreach ($gurus as $guru) {

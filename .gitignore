@@ -1,24 +1,52 @@
-*.log
+# OS / Editor
 .DS_Store
-.env
-.env.backup
-.env.production
-.phpactor.json
-.phpunit.result.cache
-/.fleet
+Thumbs.db
 /.idea
-/.nova
-/.phpunit.cache
 /.vscode
+/.fleet
 /.zed
+
+# Environment files
+.env
+.env.*
 /auth.json
-/node_modules
-/public/build
+
+# Logs
+*.log
+
+# Node/Vite assets
+/node_modules/
+/public/build/
 /public/hot
+
+# Composer vendor
+/vendor/
+
+# Laravel storage & cache
 /public/storage
 /storage/*.key
 /storage/pail
-/vendor
+/storage/debugbar/
+/storage/framework/*
+!/storage/framework/.gitignore
+/storage/logs/*
+!/storage/logs/.gitignore
+
+# Bootstrap cache
+/bootstrap/cache/*
+!bootstrap/cache/.gitignore
+
+# PHPUnit & test caches
+.phpunit.result.cache
+/.phpunit.cache
+
+# Tools
+.phpactor.json
+/.nova
+
+# Coverage
+/coverage/
+
+# Homestead
 Homestead.json
 Homestead.yaml
-Thumbs.db

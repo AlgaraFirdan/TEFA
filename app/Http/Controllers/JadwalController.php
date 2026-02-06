@@ -12,10 +12,33 @@ use Illuminate\Http\Request;
 
 class JadwalController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $jadwals = Jadwal::with('ruangan', 'hari', 'sesi', 'guru', 'mapel')->get();
-        return view('admin.jadwal.index', compact('jadwals'));
+        $query = Jadwal::with('ruangan', 'hari', 'sesi', 'guru', 'mapel');
+        
+        // Apply filters
+        if ($request->filled('ruangan_id')) {
+            $query->where('ruangan_id', $request->ruangan_id);
+        }
+        if ($request->filled('hari_id')) {
+            $query->where('hari_id', $request->hari_id);
+        }
+        if ($request->filled('guru_id')) {
+            $query->where('guru_id', $request->guru_id);
+        }
+        if ($request->filled('mapel_id')) {
+            $query->where('mapel_id', $request->mapel_id);
+        }
+        
+        $jadwals = $query->orderBy('ruangan_id')->orderBy('hari_id')->orderBy('sesi_id')->get();
+        
+        // Get filter options
+        $ruangans = Ruangan::orderBy('kode')->get();
+        $haris = Hari::orderBy('id')->get();
+        $gurus = Guru::orderBy('nama')->get();
+        $mapels = Mapel::orderBy('nama')->get();
+        
+        return view('admin.jadwal.index', compact('jadwals', 'ruangans', 'haris', 'gurus', 'mapels'));
     }
 
     public function create()
