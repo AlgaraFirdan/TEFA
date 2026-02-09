@@ -29,6 +29,7 @@
             <label class="block text-sm font-medium text-gray-700 mb-1">Sesi / Fase Waktu</label>
             <select id="sesiSelect" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                 <option value="">-- Pembelajaran Selesai --</option>
+                <option value="belum_dimulai">🌙 Pembelajaran Belum Dimulai</option>
                 @php $sesiNum = 0; @endphp
                 @foreach($sesi as $s)
                     @if($s->is_istirahat)
@@ -51,6 +52,11 @@
     <div class="border-t pt-6">
         <h4 class="text-md font-semibold text-gray-700 mb-4">Preview Cepat - Semua Fase Waktu</h4>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            <button onclick="quickPreview('belum_dimulai')" 
+                class="px-4 py-3 bg-indigo-100 text-indigo-800 rounded-lg hover:bg-indigo-200 transition text-sm font-medium">
+                Belum Dimulai<br>
+                <span class="text-xs">00:00 - Sesi 1</span>
+            </button>
             @php $sesiNum = 0; @endphp
             @foreach($sesi as $s)
                 @if($s->is_istirahat)
@@ -117,7 +123,6 @@
         let url = '{{ route("information-lab.index") }}?ruangan_id=' + ruanganId + '&preview_hari_id=' + hariId;
         if (sesiId) {
             url += '&preview_sesi_id=' + sesiId;
-            // Update the sesi select
             document.getElementById('sesiSelect').value = sesiId;
         } else {
             document.getElementById('sesiSelect').value = '';

@@ -10,6 +10,7 @@
         <table class="min-w-full bg-white">
             <thead class="bg-gray-50">
                 <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kode</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                 </tr>
@@ -17,6 +18,7 @@
             <tbody class="bg-white divide-y divide-gray-200">
                 @forelse($mapels as $mapel)
                 <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $mapel->kode }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $mapel->nama }}</td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <a href="{{ route('admin.mapel.show', $mapel) }}" class="text-indigo-600 hover:text-indigo-900">Lihat</a>
@@ -30,7 +32,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="2" class="px-6 py-4 text-center text-gray-500">Tidak ada data mata pelajaran.</td>
+                    <td colspan="3" class="px-6 py-4 text-center text-gray-500">Tidak ada data mata pelajaran.</td>
                 </tr>
                 @endforelse
             </tbody>

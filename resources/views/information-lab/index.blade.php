@@ -12,6 +12,7 @@
         // Determine if class is in session or finished
         $isPembelajaranAktif = $jadwalSekarang !== null;
         $isIstirahat = $currentSesi && $currentSesi->is_istirahat;
+        $isBelumDimulai = $isBelumDimulai ?? false;
         
         // In preview mode or normal mode: dark mode only when no current session at all
         // Light mode when: pembelajaran aktif, istirahat, or preview mode with a session selected
@@ -336,6 +337,11 @@
                             <span class="{{ $isDarkMode ? 'text-white' : 'text-gray-800' }}">Jam</span>
                             <span class="text-blue-500 ml-2">Ke-{{ $sesiNumber ?? '-' }}</span>
                         </h2>
+                    @elseif($isBelumDimulai)
+                        <h2 class="text-4xl font-bold tracking-tight">
+                            <span class="text-white">Pembelajaran</span>
+                            <span class="text-blue-400 ml-2">Belum Dimulai</span>
+                        </h2>
                     @else
                         <h2 class="text-4xl font-bold tracking-tight">
                             <span class="text-white">Pembelajaran</span>
@@ -391,6 +397,15 @@
                                 {{ $ruangan->penanggungJawab?->nama ?? 'Belum ditentukan' }}
                             </p>
                             <p class="text-lg {{ $isDarkMode ? 'text-gray-300' : 'text-gray-600' }} font-light">
+                                Penanggung Jawab {{ $ruangan->nama }}
+                            </p>
+                        </div>
+                    @elseif($isBelumDimulai)
+                        <div class="space-y-1">
+                            <p class="text-2xl text-blue-400 font-semibold">
+                                {{ $ruangan->penanggungJawab?->nama ?? 'Belum ditentukan' }}
+                            </p>
+                            <p class="text-lg text-gray-300 font-light">
                                 Penanggung Jawab {{ $ruangan->nama }}
                             </p>
                         </div>

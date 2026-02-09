@@ -4,6 +4,9 @@
 <div class="bg-white shadow rounded-lg p-6">
     <h2 class="text-2xl font-bold mb-4">Detail Mata Pelajaran</h2>
     <div class="mb-4">
+        <strong>Kode:</strong> {{ $mapel->kode }}
+    </div>
+    <div class="mb-4">
         <strong>Nama:</strong> {{ $mapel->nama }}
     </div>
     <div class="flex justify-end">

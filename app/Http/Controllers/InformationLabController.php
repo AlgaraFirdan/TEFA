@@ -45,9 +45,10 @@ class InformationLabController extends Controller
         $jadwalSekarang = null;
         $sesiNumber = null;
         $sesiCounter = 0;
+        $isBelumDimulai = false;
         
         // Preview mode: use specified session
-        if ($previewSesiId) {
+        if ($previewSesiId && $previewSesiId !== 'belum_dimulai') {
             $previewSesi = Sesi::find($previewSesiId);
             if ($previewSesi) {
                 foreach ($allSesi as $sesi) {
@@ -64,6 +65,12 @@ class InformationLabController extends Controller
                     }
                 }
             }
+        } elseif ($previewSesiId === 'belum_dimulai') {
+            // Preview "belum dimulai" state
+            $isBelumDimulai = true;
+        } elseif ($previewHariId) {
+            // Preview mode with no sesi selected = "selesai" state
+            // Leave $currentSesi as null
         } else {
             // Normal mode: use current time
             foreach ($allSesi as $sesi) {
@@ -83,6 +90,17 @@ class InformationLabController extends Controller
                     break;
                 }
             }
+
+            // If no session matched, check if before first session (belum dimulai)
+            if (!$currentSesi) {
+                $firstSesi = $allSesi->first();
+                if ($firstSesi) {
+                    $firstMulai = Carbon::today()->setTimeFromTimeString($firstSesi->jam_mulai);
+                    if ($sekarang->lt($firstMulai)) {
+                        $isBelumDimulai = true;
+                    }
+                }
+            }
         }
 
         return view('information-lab.index', [
@@ -94,7 +112,8 @@ class InformationLabController extends Controller
             'currentSesi' => $currentSesi,
             'sesiNumber' => $sesiNumber,
             'hari' => $hari,
-            'isPreviewMode' => $previewSesiId !== null,
+            'isBelumDimulai' => $isBelumDimulai,
+            'isPreviewMode' => $previewSesiId !== null || $previewHariId !== null,
         ]);
     }
 
